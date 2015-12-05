@@ -290,7 +290,6 @@ static void kernel_receive (struct sk_buff *__skb)
 static int __init traffic_init(void) {
 	int ret = 0;
 
-
     printk("init traffic, ignore interface: %s\n", ignore_if);
 
     nf_info_init();

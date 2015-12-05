@@ -16,15 +16,13 @@
 #include "RedisSet.h"
 #define NETLINK_DEV_NUM 30
 #define BUF_LENGTH 8192
-char buf[BUF_LENGTH]={0};
+// char buf[BUF_LENGTH]={0};
 // char action[16]={0};
 
 #define ACTION_SUMMARY   0
 #define ACTION_CLEAR_NEW 1
 #define ACTION_CLEAR_ALL 2
 #define ACTION_ONLINE    3
-
-
 
 using namespace std;
 
@@ -55,12 +53,21 @@ public:
 
     void startCollectorAndReporter();
 
+    void getOnlineDevs();
+    void dump_online_devs(int fd, struct msghdr* msg);
+
 
 private:
 
     RedisSet* mac_addr_redis_set;
+    int dump_online;
+    // int skfd;
+    // boost::mutex fd_mutex;
 
     int report_interval;
     string redis_set_key;
     InfoReporter* info_reporter;
 };
+
+
+
